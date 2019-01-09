@@ -35,7 +35,9 @@ weather.weatherRequest(25.60548 , 85.1526573, (error , response) => {
 const express = require('express')
 const hbs = require('hbs')
 
-hbs.registerPartials(__dirname+'/views/partials')
+const port = process.env.PORT || 3000
+
+hbs.registerPartials(__dirname + '/views/partials')
 const app = express()
 app.set('view engine', 'hbs')
 
@@ -58,4 +60,6 @@ app.get('/bad', (req, res) => {
 
 app.use(express.static(__dirname + '/public'))
 
-app.listen(3000)
+app.listen(port, () => {
+  console.log(`Your server is running at ${port}`)
+})
